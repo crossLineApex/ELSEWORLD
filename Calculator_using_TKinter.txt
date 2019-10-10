@@ -1,0 +1,139 @@
+#new calculator project
+from tkinter import *
+from math import *
+root=Tk()
+root.title("Scientific Calculator")
+root.iconbitmap('C:/Users/ayush/Downloads/calc.ico')
+entry=Entry(root,width=62,borderwidth=3,bg="blue",fg="white")
+entry.grid(row=0,column=0,columnspan=4)
+#functions
+def button_clr():
+    entry.delete(0,END)
+def button_click(number):
+    current=entry.get()
+    entry.delete(0,END)
+    entry.insert(0,str(current)+str(number))
+def button_add():
+    global a
+    a=0
+    global f_num
+    first_number=entry.get()
+    f_num=float(first_number)
+    entry.delete(0,END)
+def button_sub():
+    global a
+    a=1
+    global f_num
+    f_num=float(entry.get())
+    entry.delete(0,END)
+def button_div():
+    global a
+    a=2
+    global f_num
+    f_num=float(entry.get())
+    entry.delete(0,END)
+def button_mul():
+    global a
+    a=3
+    global f_num
+    f_num=float(entry.get())
+    entry.delete(0,END)
+def button_ln():
+    global f_num
+    f_num=float(entry.get())
+    entry.delete(0,END)
+    entry.insert(0,log(f_num,e))
+def button_log():
+    global f_num
+    f_num=float(entry.get())
+    entry.delete(0,END)
+    entry.insert(0,log(f_num,10))
+def button_root():
+    global f_num
+    f_num=float(entry.get())
+    entry.delete(0,END)
+    entry.insert(0,sqrt(f_num))
+def button_x_power_y():
+    global a
+    a=4
+    global f_num
+    f_num=float(entry.get())
+    entry.delete(0,END)
+def button_e_power_x():
+    global f_num
+    f_num=float(entry.get())
+    entry.delete(0,END)
+    entry.insert(0,exp(f_num))
+def button_by_x():
+    global f_num
+    f_num=float(entry.get())
+    entry.delete(0,END)
+    entry.insert(0,(float(1/f_num)))
+def button_square_x():
+    global f_num
+    f_num=float(entry.get())
+    entry.delete(0,END)
+    entry.insert(0,float(f_num**2))
+def button_eql():
+    second_num=float(entry.get())
+    entry.delete(0,END)
+    if(a==0):
+        result=(second_num)+f_num
+    elif(a==1):
+        result=f_num-(second_num)
+    elif(a==2):
+        result=f_num/(second_num)
+    elif(a==3):
+        result=second_num*f_num
+    else:
+        result=float(pow(f_num,second_num))
+    entry.insert(0,result)
+    
+button_7=Button(root,text="7",padx=40,pady=20,bg="red",fg="white",command=lambda:button_click(7))
+button_8=Button(root,text="8",padx=40,pady=20,bg="red",fg="white",command=lambda:button_click(8))
+button_9=Button(root,text="9",padx=40,pady=20,bg="red",fg="white",command=lambda:button_click(9))
+button_4=Button(root,text="4",padx=40,pady=20,bg="red",fg="white",command=lambda:button_click(4))
+button_5=Button(root,text="5",padx=40,pady=20,bg="red",fg="white",command=lambda:button_click(5))
+button_6=Button(root,text="6",padx=40,pady=20,bg="red",fg="white",command=lambda:button_click(6))
+button_1=Button(root,text="1",padx=40,pady=20,bg="red",fg="white",command=lambda:button_click(1))
+button_2=Button(root,text="2",padx=40,pady=20,bg="red",fg="white",command=lambda:button_click(2))
+button_3=Button(root,text="3",padx=40,pady=20,bg="red",fg="white",command=lambda:button_click(3))
+button_0=Button(root,text="0",padx=40,pady=20,bg="red",fg="white",command=lambda:button_click(0))
+button_ln=Button(root,text="ln",padx=38,pady=20,bg="black",fg="white",command=button_ln)
+button_log=Button(root,text="log",padx=34,pady=20,bg="black",fg="white",command=button_log)
+button_root=Button(root,text="Root",padx=31,pady=20,bg="black",fg="white",command=button_root)
+button_by_x=Button(root,text="1/x",padx=35,pady=20,bg="black",fg="white",command=button_by_x)
+button_square_x=Button(root,text="x\u00b2",padx=39,pady=20,bg="black",fg="white",command=button_square_x)
+button_x_power_y=Button(root,text="x^y",padx=34,pady=20,bg="black",fg="white",command=button_x_power_y)
+button_e_power_x=Button(root,text="e^x",padx=33,pady=20,bg="black",fg="white",command=button_e_power_x)
+button_add=Button(root,text="+",padx=40,pady=20,bg="black",fg="white",command=button_add)
+button_sub=Button(root,text="-",padx=41,pady=20,bg="black",fg="white",command=button_sub)
+button_div=Button(root,text="/",padx=40,pady=20,bg="black",fg="white",command=button_div)
+button_mul=Button(root,text="*",padx=41,pady=20,bg="black",fg="white",command=button_mul)
+button_clr=Button(root,text="C",padx=40,pady=20,command=button_clr)
+button_eql=Button(root,text="=",padx=87,pady=20,bg="green",fg="white",command=button_eql)
+#setting button
+button_7.grid(row=1,column=0)
+button_8.grid(row=1,column=1)
+button_9.grid(row=1,column=2)
+button_4.grid(row=2,column=0)
+button_5.grid(row=2,column=1)
+button_6.grid(row=2,column=2)
+button_1.grid(row=3,column=0)
+button_2.grid(row=3,column=1)
+button_3.grid(row=3,column=2)
+button_0.grid(row=4,column=0)
+button_ln.grid(row=5,column=0)
+button_log.grid(row=5,column=1)
+button_root.grid(row=4,column=3)
+button_by_x.grid(row=5,column=3)
+button_square_x.grid(row=5,column=2)
+button_x_power_y.grid(row=6,column=0)
+button_e_power_x.grid(row=6,column=1)
+button_add.grid(row=2,column=3)
+button_sub.grid(row=3,column=3)
+button_mul.grid(row=4,column=2)
+button_div.grid(row=4,column=1)
+button_clr.grid(row=1,column=3)
+button_eql.grid(row=6,column=2,columnspan=2)
+root.mainloop()
